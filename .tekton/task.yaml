@@ -55,7 +55,7 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - set -e -o pipefail;
-          ibmcloud login -a $API -r $REGION;
+          ibmcloud login -a $API -r $REGION --apikey $IBMCLOUD_API_KEY;
           export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";
           source pre-build-check.sh;
       volumeMounts:
@@ -85,7 +85,7 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - set -e -o pipefail;
-          ibmcloud login -a $API -r $REGION;
+          ibmcloud login -a $API -r $REGION --apikey $IBMCLOUD_API_KEY;
           export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";
           export GIT_COMMIT=$(git rev-parse HEAD);
           export REGISTRY_URL=$(ibmcloud cr info | sed "2q;d" | awk '{for(i=1;i<=NF;i++) if ($i=="Registry") print $(i+1)}');
@@ -146,7 +146,7 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - set -e -o pipefail;
-          ibmcloud login -a $API -r $REGION;
+          ibmcloud login -a $API -r $REGION --apikey $IBMCLOUD_API_KEY;
           while read line; do export $line; done < /artifacts/build.properties;
           cp /artifacts/build.properties .;
           source check-vulnerabilities.sh || true;
@@ -218,7 +218,7 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
         - set -e -o pipefail;
-          ibmcloud login -a $API -r $REGION;
+          ibmcloud login -a $API -r $REGION --apikey $IBMCLOUD_API_KEY;
           $(ibmcloud ks cluster config --cluster "${PIPELINE_KUBERNETES_CLUSTER_NAME}" --export);
           while read line; do export $line; done < /artifacts/build.properties;
           cp /artifacts/build.properties .;
