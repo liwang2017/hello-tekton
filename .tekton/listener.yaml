@@ -22,7 +22,6 @@ spec:
       default: us-south
     - name: clusterNamespace
       description: The Kubernetes cluster namespace
-      default: prod
   resourcetemplates:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
