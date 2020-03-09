@@ -13,7 +13,7 @@
 *   See the License for the specific language governing permissions and
 *   limitations under the License.
 **/
-
+# For test, not commit
 var express = require('express');
 
 var PORT;
@@ -25,7 +25,7 @@ if (process.env.PORT) {
 
 var app = express();
 app.get('/', function (req, res) {
-  res.send("Welcome to IBM Cloud DevOps with Tekton. Let's go use the Continuous Delivery Service, changed by Lily.");
+  res.send("Welcome to IBM Cloud DevOps with Tekton. Let's go use the Continuous Delivery Service, changed by Lily, and will commit.");
 });
 
 app.listen(PORT);
