@@ -13,7 +13,6 @@
 *   See the License for the specific language governing permissions and
 *   limitations under the License.
 **/
-# For test, not commit
 var express = require('express');
 
 var PORT;
